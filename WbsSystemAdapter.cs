@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataProvider;
 using SUPR;
 
-namespace LoodsmanAdapters
+namespace UMP.Loodsman.Adapters
 {
-    public class WbsSystemAdapter : AdapterBase
+    public class WbsSystemAdapter : ApiAdapterBase
     {
-        private readonly ConnectionAdapter _connectionAdapter;
         public IWBSSystem WbsSystem { get; private set; }
-
-        public WbsSystemAdapter(string dbName) : base(dbName)
+        public WbsSystemAdapter(IWBSSystem wbsSystem) : base((ISimpleAPI2)wbsSystem.Connection)
         {
+            WbsSystem = wbsSystem;
         }
-
-        protected override void Init()
+        public WbsSystemAdapter(ConnectionAdapter connectionAdapter) : base(connectionAdapter)
         {
             WbsSystem = new WBSSystemClass()
             {
-                Connection = _connectionAdapter.SimpleApi
+                Connection = connectionAdapter.Api
             };
         }
     }

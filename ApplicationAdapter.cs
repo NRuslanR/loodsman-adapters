@@ -1,28 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Loodsman;
+﻿using Loodsman;
 using SUPR;
 
-namespace LoodsmanAdapters
+namespace UMP.Loodsman.Adapters
 {
-    public class ApplicationAdapter: AdapterBase
+    public class ApplicationAdapter
     {
-        public IPluginCall PluginCall => Application.GetPluginCall();
-
-        public IWBSSystem WbsSystem => PluginCall.WBSSystem;
-
-        public ILoodsmanApplication Application { get; }
-        public ApplicationAdapter(ILoodsmanApplication app) : base(app)
+        private readonly ILoodsmanApplication _app;
+        public ApplicationAdapter(ILoodsmanApplication app)
         {
-            Application = app;
-        }
-
-        protected override void Init()
-        {
-            
+            _app = app;
         }
     }
 }

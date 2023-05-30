@@ -7,8 +7,8 @@
     <ProjectGuid>{8D779AFB-222C-4038-A06A-2B90FD5C4D40}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LoodsmanAdapters</RootNamespace>
-    <AssemblyName>LoodsmanAdapters</AssemblyName>
+    <RootNamespace>UMP.Loodsman.Adapters</RootNamespace>
+    <AssemblyName>Loodsman.Adapters</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -33,21 +33,17 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdapterBase.cs" />
+    <Compile Include="ApiAdapterBase.cs" />
     <Compile Include="ApiAdapter.cs" />
     <Compile Include="ApplicationAdapter.cs" />
     <Compile Include="ConnectionAdapter.cs" />
     <Compile Include="PluginCallBack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WbsSystemAdapter.cs" />
+    <Compile Include="WfblAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Ask">
@@ -84,7 +80,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="LoodsmanObjects">
       <Guid>{993330A6-6D54-40D6-9B30-67EE2A0FE3BB}</Guid>
@@ -93,7 +89,7 @@
       <Lcid>0</Lcid>
       <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </COMReference>
     <COMReference Include="PDMObjects">
       <Guid>{10D3926C-2A54-4343-80AB-4A4B28899959}</Guid>
@@ -115,6 +111,15 @@
     </COMReference>
     <COMReference Include="SUPR">
       <Guid>{363B1BF1-C0F5-4E26-93D1-4DD9EFFFBD53}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WorkflowBusinessLogic">
+      <Guid>{1FDA6F1C-2D72-4474-870E-A021A02187CA}</Guid>
       <VersionMajor>1</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>

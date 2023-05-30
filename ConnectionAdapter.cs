@@ -1,29 +1,25 @@
 ﻿using DataProvider;
-using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 using Loodsman;
+using LoodsmanObjects;
+using SUPR;
+using Task = System.Threading.Tasks.Task;
 
-namespace LoodsmanAdapters
+namespace UMP.Loodsman.Adapters
 {
-    internal class ConnectionAdapter
+    public class ConnectionAdapter
     {
-        public ISimpleAPI SimpleApi { get; }
+        public ISimpleAPI2 Api { get; }
+
         public ConnectionAdapter(string dbName)
         {
-            var _connection = new LoodsmanConnectionClass();
-            _connection.API8.UniConnect(dbName, "");
-            SimpleApi = _connection.API8.GetSimpleAPI();
+            var connection = new LoodsmanConnectionClass();
+            connection.API8.UniConnect(dbName, "");
+            Api = (ISimpleAPI2)connection.API8.GetSimpleAPI();
         }
 
-        public ConnectionAdapter(ILoodsmanApplication app)
+        public ConnectionAdapter(ISimpleAPI2 simpleApi)
         {
-            SimpleApi = app.DataBase.Connection;
+            Api = simpleApi;
         }
     }
 }

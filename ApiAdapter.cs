@@ -1,24 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataProvider;
-using SUPR;
-
-namespace LoodsmanAdapters
+﻿
+namespace UMP.Loodsman.Adapters
 {
-    public class ApiAdapter: AdapterBase
+    public class ApiAdapter: ApiAdapterBase
     {
-        private readonly ConnectionAdapter _connectionAdapter;
-        public ApiAdapter(string dbName): base(dbName)
+        public ApiAdapter(ConnectionAdapter connectionAdapter): base(connectionAdapter)
         {
-            _connectionAdapter = new ConnectionAdapter(dbName);
-        }
 
-        protected override void Init()
-        {
-            
         }
     }
 }
