@@ -8,20 +8,31 @@ using WorkflowBusinessLogic;
 
 namespace UMP.Loodsman.Adapters
 {
-    public class WFBLAdapter: ApiAdapterBase
+    public class WfblAdapter: IWfblAdapter
     {
-        public IWFBusinessLogic WFBL { get; private set; }
-        // public IWFSystem WfSystem { get; private set; }
-        public WFBLAdapter(IWFBusinessLogic WFBL) : base((ISimpleAPI2)WFBL.GetSimpleAPIInterface())
+        public IWFBusinessLogic Wfbl { get; private set; }
+        // public IWFSystem WfSystem { get; private set; } Раскомментить когда найдётся IWFSystem
+
+        public WfblAdapter(string DBName): this(DBName, "")
         {
-            this.WFBL = WFBL;
+
+        }
+
+        public WfblAdapter(string DBName, string checkout): this(DBName, checkout, "", "")
+        {
+            
+        }
+        public WfblAdapter(string DBName, string checkout, string username, string password)
+        {
+            Wfbl = new WFBusinessLogicClass();
+            Wfbl.ConnectToDB(DBName, "", "", "");
             // WfSystem = Wfbl.WFSystem;
         }
 
-        // public WfblAdapter(ConnectionAdapter connectionAdapter) : base(connectionAdapter)
-        // {
-        //
-        // }
-
+        public WfblAdapter(IWFBusinessLogic wfbl)
+        {
+            Wfbl = wfbl;
+            // WfSystem = Wfbl.WFSystem;
+        }
     }
 }

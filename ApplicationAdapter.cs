@@ -3,12 +3,13 @@ using SUPR;
 
 namespace UMP.Loodsman.Adapters
 {
-    public class ApplicationAdapter
+    public class ApplicationAdapter: IApplicationAdapter
     {
-        private readonly ILoodsmanApplication _app;
-        public ApplicationAdapter(ILoodsmanApplication app)
+        public ILoodsmanApplication Application { get; private set; }
+
+        public ApplicationAdapter(ILoodsmanApplication application)
         {
-            _app = app;
+            Application = application;
         }
     }
 }
