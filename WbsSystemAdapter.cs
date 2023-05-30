@@ -3,16 +3,16 @@ using SUPR;
 
 namespace UMP.Loodsman.Adapters
 {
-    public class WbsSystemAdapter : ApiAdapterBase
+    public class WBSSystemAdapter : ApiAdapterBase
     {
-        public IWBSSystem WbsSystem { get; private set; }
-        public WbsSystemAdapter(IWBSSystem wbsSystem) : base((ISimpleAPI2)wbsSystem.Connection)
+        public IWBSSystem WBSSystem { get; private set; }
+        public WBSSystemAdapter(IWBSSystem WBSSystem) : base((ISimpleAPI2)WBSSystem.Connection)
         {
-            WbsSystem = wbsSystem;
+            this.WBSSystem = WBSSystem;
         }
-        public WbsSystemAdapter(ConnectionAdapter connectionAdapter) : base(connectionAdapter)
+        public WBSSystemAdapter(ConnectionAdapter connectionAdapter) : base(connectionAdapter)
         {
-            WbsSystem = new WBSSystemClass()
+            WBSSystem = new WBSSystemClass()
             {
                 Connection = connectionAdapter.Api
             };

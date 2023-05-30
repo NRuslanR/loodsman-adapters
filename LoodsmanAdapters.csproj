@@ -42,8 +42,8 @@
     <Compile Include="ConnectionAdapter.cs" />
     <Compile Include="PluginCallBack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WbsSystemAdapter.cs" />
-    <Compile Include="WfblAdapter.cs" />
+    <Compile Include="WBSSystemAdapter.cs" />
+    <Compile Include="WFBLAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Ask">

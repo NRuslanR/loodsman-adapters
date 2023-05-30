@@ -19,31 +19,31 @@ namespace UMP.Loodsman.Adapters
             _connectionAdapter = new ConnectionAdapter(simpleApi);
         }
 
-        protected T RunMethod<T>(string methodName, params object[] arguments)
+        public T RunMethod<T>(string methodName, params object[] arguments)
         {
             return (T)_connectionAdapter.Api.RunMethod(methodName, arguments);
         }
 
-        protected IDataSet GetDataSet(string methodName, params object[] arguments)
+        public IDataSet GetDataSet(string methodName, params object[] arguments)
         {
             return _connectionAdapter.Api.GetDataSet(methodName, arguments) as IDataSet;
         }
 
-        protected Task<T> RunMethodAsync<T>(string methodName, params object[] arguments)
+        public Task<T> RunMethodAsync<T>(string methodName, params object[] arguments)
         {
             return RunTaskAsync<T>(CancellationToken.None, methodName, arguments);
         }
 
-        protected Task<T> RunMethodAsync<T>(CancellationToken token, string methodName, params object[] arguments)
+        public Task<T> RunMethodAsync<T>(CancellationToken token, string methodName, params object[] arguments)
         {
             return RunTaskAsync<T>(token, methodName, arguments);
         }
 
-        protected Task<IDataSet> GetDataSetAsync(string methodName, params object[] arguments)
+        public Task<IDataSet> GetDataSetAsync(string methodName, params object[] arguments)
         {
             return RunTaskAsync<IDataSet>(CancellationToken.None, methodName, arguments);
         }
-        protected Task<IDataSet> GetDataSetAsync(CancellationToken token, string methodName, params object[] arguments)
+        public Task<IDataSet> GetDataSetAsync(CancellationToken token, string methodName, params object[] arguments)
         {
             return RunTaskAsync<IDataSet>(token, methodName, arguments);
         }

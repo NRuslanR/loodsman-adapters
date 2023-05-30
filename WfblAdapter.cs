@@ -8,13 +8,13 @@ using WorkflowBusinessLogic;
 
 namespace UMP.Loodsman.Adapters
 {
-    public class WfblAdapter: ApiAdapterBase
+    public class WFBLAdapter: ApiAdapterBase
     {
-        public IWFBusinessLogic Wfbl { get; private set; }
+        public IWFBusinessLogic WFBL { get; private set; }
         // public IWFSystem WfSystem { get; private set; }
-        public WfblAdapter(IWFBusinessLogic wfbl) : base((ISimpleAPI2)wfbl.GetSimpleAPIInterface())
+        public WFBLAdapter(IWFBusinessLogic WFBL) : base((ISimpleAPI2)WFBL.GetSimpleAPIInterface())
         {
-            Wfbl = wfbl;
+            this.WFBL = WFBL;
             // WfSystem = Wfbl.WFSystem;
         }
 
