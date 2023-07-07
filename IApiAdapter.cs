@@ -8,6 +8,7 @@ namespace UMP.Loodsman.Adapters
     {
         ISimpleAPI2 Api { get; }
 
+        void RunMethod(string methodName, params object[] arguments);
         T RunMethod<T>(string methodName, params object[] arguments);
         IDataSet GetDataSet(string methodName, params object[] arguments);
         Task RunMethodAsync(string methodName, params object[] arguments);

@@ -13,6 +13,12 @@ namespace UMP.Loodsman.Adapters
         {
             Api = api;
         }
+
+        public void RunMethod(string methodName, params object[] arguments)
+        {
+            Api.RunMethod(methodName, arguments);
+        }
+
         public T RunMethod<T>(string methodName, params object[] arguments)
         {
             return (T)Api.RunMethod(methodName, arguments);
