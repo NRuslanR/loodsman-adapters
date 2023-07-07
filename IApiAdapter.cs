@@ -10,7 +10,8 @@ namespace UMP.Loodsman.Adapters
 
         T RunMethod<T>(string methodName, params object[] arguments);
         IDataSet GetDataSet(string methodName, params object[] arguments);
-
+        Task RunMethodAsync(string methodName, params object[] arguments);
+        Task RunMethodAsync(CancellationToken token, string methodName, params object[] arguments);
         Task<T> RunMethodAsync<T>(string methodName, params object[] arguments);
 
         Task<T> RunMethodAsync<T>(CancellationToken token, string methodName, params object[] arguments);

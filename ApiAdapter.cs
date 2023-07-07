@@ -23,6 +23,16 @@ namespace UMP.Loodsman.Adapters
             return Api.GetDataSet(methodName, arguments) as IDataSet;
         }
 
+        public Task RunMethodAsync(string methodName, params object[] arguments)
+        {
+            return RunTaskAsync<object>(CancellationToken.None, methodName, arguments);
+        }
+
+        public Task RunMethodAsync(CancellationToken token, string methodName, params object[] arguments)
+        {
+            return RunTaskAsync<object>(token, methodName, arguments);
+        }
+
         public Task<T> RunMethodAsync<T>(string methodName, params object[] arguments)
         {
             return RunTaskAsync<T>(CancellationToken.None, methodName, arguments);
