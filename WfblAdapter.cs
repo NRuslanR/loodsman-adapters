@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataProvider;
+using Loodsman;
 using WorkflowBusinessLogic;
 
 namespace UMP.Loodsman.Adapters
@@ -13,18 +14,20 @@ namespace UMP.Loodsman.Adapters
         public IWFBusinessLogic Wfbl { get; private set; }
         // public IWFSystem WfSystem { get; private set; } Раскомментить когда найдётся IWFSystem
 
-        public WfblAdapter(string DBName): this(DBName, "")
+        public WfblAdapter(string DBName, string serverName): this(DBName,serverName, "")
         {
 
         }
 
-        public WfblAdapter(string DBName, string checkout): this(DBName, checkout, "", "")
+        public WfblAdapter(string DBName, string serverName, string checkout): this(DBName, serverName, checkout, "", "")
         {
             
         }
-        public WfblAdapter(string DBName, string checkout, string username, string password)
+        public WfblAdapter(string DBName,string serverName, string checkout, string username, string password)
         {
             Wfbl = new WFBusinessLogicClass();
+            Wfbl.AppServer = serverName;
+            Wfbl.Connected = true;
             Wfbl.ConnectToDB(DBName, "", "", "");
             // WfSystem = Wfbl.WFSystem;
         }
