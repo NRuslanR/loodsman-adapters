@@ -3,9 +3,8 @@ using SUPR;
 
 namespace UMP.Loodsman.Adapters
 {
-    public class WbsSystemAdapter: IWbsSystemAdapter
+    public class WbsSystemAdapter : IWbsSystemAdapter
     {
-        public IWBSSystem WbsSystem { get; private set; }
         public WbsSystemAdapter(ISimpleAPI2 simpleApi)
         {
             WbsSystem = new WBSSystemClass();
@@ -16,5 +15,7 @@ namespace UMP.Loodsman.Adapters
         {
             WbsSystem = wbsSystem;
         }
+
+        public IWBSSystem WbsSystem { get; }
     }
 }

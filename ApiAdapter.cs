@@ -1,18 +1,18 @@
-﻿
-using DataProvider;
-using System.Threading.Tasks;
+﻿using System;
 using System.Threading;
-using System;
+using System.Threading.Tasks;
+using DataProvider;
 
 namespace UMP.Loodsman.Adapters
 {
-    public class ApiAdapter: IApiAdapter
+    public class ApiAdapter : IApiAdapter
     {
-        public ISimpleAPI2 Api { get; private set; }
         public ApiAdapter(ISimpleAPI2 api)
         {
             Api = api;
         }
+
+        public ISimpleAPI2 Api { get; }
 
         public void RunMethod(string methodName, params object[] arguments)
         {
@@ -61,32 +61,33 @@ namespace UMP.Loodsman.Adapters
 
         private Task<T> RunTaskAsync<T>(CancellationToken token, string methodName, params object[] arguments)
         {
-            var pluginCallBack = new PluginCallBack();
             var tcs = new TaskCompletionSource<T>();
-            PluginCallBack.CallBackHandler handler =
-                (taskId, resultData, IDataSet, errorMsg, tag) =>
+
+            void OnResultReceivedEventHandler(int taskId, object resultData, IDataSet dataSet, string errorMsg, int tag)
+            {
+                if (!string.IsNullOrWhiteSpace(errorMsg))
                 {
-                    if (errorMsg != null)
-                    {
-                        throw new Exception(errorMsg);
-                    }
-                    if (typeof(T) == typeof(IDataSet))
-                    {
-                        tcs.TrySetResult((T)IDataSet);
-                    }
-                    else
-                    {
-                        tcs.TrySetResult((T)resultData);
-                    }
-                };
+                    tcs.TrySetException(new Exception(errorMsg));
+                }
+
+                else
+                {
+                    var result = typeof(T) == typeof(IDataSet) ? (T)dataSet : (T)resultData;
+
+                    tcs.TrySetResult(result);
+                }
+            }
+
+            var pluginCallBack = new PluginCallBack();
+
             try
             {
-                pluginCallBack.ResultReceived += handler;
+                pluginCallBack.ResultReceived += OnResultReceivedEventHandler;
                 var taskId = Api.AsyncTask.Run(methodName, arguments, pluginCallBack, 0);
                 token.Register(() =>
                 {
                     Api.AsyncTask.Cancel(taskId);
-                    pluginCallBack.ResultReceived -= handler;
+                    pluginCallBack.ResultReceived -= OnResultReceivedEventHandler;
                     tcs.SetCanceled();
                 });
             }
@@ -94,6 +95,7 @@ namespace UMP.Loodsman.Adapters
             {
                 tcs.TrySetException(ex);
             }
+
             return tcs.Task;
         }
     }

@@ -1,12 +1,13 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("LoodsmanAdapters")]
-[assembly: AssemblyDescription("Адаптеры для удобной работы с различными системами Loodsman (Api сервера приложения, окно приложения, подсистема СПиУПП и т.д.)")]
+[assembly:
+    AssemblyDescription(
+        "Адаптеры для удобной работы с различными системами Loodsman (Api сервера приложения, окно приложения, подсистема СПиУПП и т.д.)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("UMP")]
 [assembly: AssemblyProduct("LoodsmanAdapters")]
@@ -32,5 +33,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.0.0")]
-[assembly: AssemblyFileVersion("2.1.0.0")]
+[assembly: AssemblyVersion("2.1.1.0")]
+[assembly: AssemblyFileVersion("2.1.1.0")]

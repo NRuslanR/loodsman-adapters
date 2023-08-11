@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Loodsman;
+﻿using Loodsman;
 
 namespace UMP.Loodsman.Adapters
 {
